@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-const { create } = require("../../../media-service/src/models/Media");
 
 const searchSchema = new mongoose.Schema(
   {

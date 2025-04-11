@@ -12,9 +12,10 @@ async function connectRabbitMQ() {
     await channel.assertExchange(EXCHANGE_NAME, "topic", {
       durable: true,
     });
+    logger.info("Connected to RabbitMQ");
     return channel;
   } catch (error) {
-    logger.error("Error connecting to rabbit mq", e);
+    logger.error("Error connecting to rabbit mq", error);
   }
 }
 
@@ -33,7 +34,7 @@ async function publishEvent(routingKey, message) {
 
 async function consumeEvent(routingKey, callback) {
   if (!channel) {
-    await connectToRabbitMQ();
+    await connectRabbitMQ();
   }
 
   const q = await channel.assertQueue("", { exclusive: true });

@@ -1,7 +1,4 @@
 const moongoose = require("mongoose");
-const {
-  modelName,
-} = require("../../../identity-service/src/models/RefreshToken");
 
 const postSchema = new moongoose.Schema(
   {
